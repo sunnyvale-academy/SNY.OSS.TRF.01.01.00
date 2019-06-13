@@ -1,6 +1,6 @@
 # Lab VM setup
 
-## Prerequisite
+## Prerequisites
 
 The following softwares have to be installed on you host machine
 
@@ -8,6 +8,8 @@ The following softwares have to be installed on you host machine
 - Virtualbox [download here](https://www.virtualbox.org/wiki/Downloads)
 - Vagrant [download here](https://www.vagrantup.com/downloads.html)
 - Bash command line (Git bash, Moba or Cygwin if you are on Windows) 
+
+## VM provisioning
 
 Install the Vagrant hostmanager plugin
 

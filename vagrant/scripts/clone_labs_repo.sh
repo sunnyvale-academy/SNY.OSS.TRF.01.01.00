@@ -1,1 +1,5 @@
-git clone https://github.com/sunnyvale-academy/SNY.OSS.TRF.01.01.00.git
+. /vagrant/scripts/.env
+if [ ! -d $GIT_REPO_NAME ]; then
+    git clone $GIT_REPO_URL
+    sudo chown -R vagrant:vagrant /home/vagrant
+fi

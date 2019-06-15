@@ -1,3 +1,4 @@
 **/*.log
 **/.vagrant
 **/.DS_Store
+vagrant/gcp/*.json

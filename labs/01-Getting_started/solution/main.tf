@@ -2,7 +2,7 @@
 provider "google" {
  credentials = "${file("/home/vagrant/SNY-OSS-TRF-01-01-00-870577b1e676.json")}"
  project     = "sny-oss-trf-01-01-00"
- region      = "europe-west4"
+ region      = "us-west1-a"
 }
 
 // Terraform plugin for creating random ids
@@ -14,7 +14,7 @@ resource "random_id" "instance_id" {
 resource "google_compute_instance" "default" {
  name         = "my-vm-${random_id.instance_id.hex}"
  machine_type = "f1-micro"
- zone         = "europe-west4"
+ zone         = "us-west1-a"
 
  boot_disk {
    initialize_params {

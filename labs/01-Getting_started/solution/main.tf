@@ -22,9 +22,6 @@ resource "google_compute_instance" "default" {
    }
  }
 
-// Make sure flask is installed on all new instances for later steps
- metadata_startup_script = "sudo apt-get update; sudo apt-get install -yq build-essential python-pip rsync; pip install flask"
-
  network_interface {
    network = "default"
 

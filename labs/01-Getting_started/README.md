@@ -240,5 +240,77 @@ This may take some time, then you should see the following page
 ```
 vagrant@terraform-vm$ terraform apply
 
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  + create
 
+Terraform will perform the following actions:
+
+  # google_compute_instance.default will be created
+  + resource "google_compute_instance" "default" {
+      + can_ip_forward       = false
+      + cpu_platform         = (known after apply)
+      + deletion_protection  = false
+      + guest_accelerator    = (known after apply)
+      + id                   = (known after apply)
+      + instance_id          = (known after apply)
+      + label_fingerprint    = (known after apply)
+      + machine_type         = "f1-micro"
+      + metadata_fingerprint = (known after apply)
+      + name                 = (known after apply)
+      + project              = (known after apply)
+      + self_link            = (known after apply)
+      + tags_fingerprint     = (known after apply)
+      + zone                 = "us-west1-a"
+
+ ...
+ Plan: 2 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+random_id.instance_id: Creating...
+random_id.instance_id: Creation complete after 0s [id=U6GwS9yBtlQ]
+google_compute_instance.default: Creating...
+google_compute_instance.default: Still creating... [10s elapsed]
+google_compute_instance.default: Still creating... [20s elapsed]
+google_compute_instance.default: Still creating... [30s elapsed]
+google_compute_instance.default: Creation complete after 30s [id=my-vm-53a1b04bdc81b654]
+
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+
+```
+
+If you go to VM instances page, you should see your newly created instance
+
+![VM instances](img/VM_list.jpg)
+
+Remember to destroy resources (active VM cost)
+
+```
+$ terraform destroy
+random_id.instance_id: Refreshing state... [id=VPapVgriyvw]
+google_compute_instance.default: Refreshing state... [id=my-vm-54f6a9560ae2cafc]
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # google_compute_instance.default will be destroyed
+  - resource "google_compute_instance" "default" {
+      - can_ip_forward       = false -> null
+      - cpu_platform         = "Intel Broadwell" -> null
+      - deletion_protection  = false -> null
+      - guest_accelerator    = [] -> null
+      - id                   = "my-vm-54f6a9560ae2cafc" -> null
+      - instance_id          = "942803623566960790" -> null
+      - label_fingerprint    = "42WmSpB8rSM=" -> null
+      - labels               = {} -> null
+      - machine_type         = "f1-micro" -> null
+...
 ```

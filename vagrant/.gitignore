@@ -1,4 +1,6 @@
 **/*.log
 **/.vagrant
 **/.DS_Store
+**/*.swp
 vagrant/gcp/*.json
+**/.terraform

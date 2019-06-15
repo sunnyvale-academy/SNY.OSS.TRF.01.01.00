@@ -291,7 +291,7 @@ If you go to VM instances page, you should see your newly created instance
 Remember to destroy resources (active VM cost)
 
 ```
-$ terraform destroy
+vagrant@terraform-vm$ terraform destroy
 random_id.instance_id: Refreshing state... [id=VPapVgriyvw]
 google_compute_instance.default: Refreshing state... [id=my-vm-54f6a9560ae2cafc]
 

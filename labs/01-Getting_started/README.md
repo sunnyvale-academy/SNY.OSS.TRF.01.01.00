@@ -59,7 +59,7 @@ Write the following code into main.tf file
 provider "google" {
  credentials = "${file("<CREDENTIALS_JSON_FILE>")}"
  project     = "<GCP_PROJECT_ID>"
- region      = "europe-west4"
+ region      = "us-west1-a"
 }
 ```
 
@@ -187,7 +187,7 @@ Terraform will perform the following actions:
       + project              = (known after apply)
       + self_link            = (known after apply)
       + tags_fingerprint     = (known after apply)
-      + zone                 = "europe-west4"
+      + zone                 = "us-west1-a"
 
       + boot_disk {
           + auto_delete                = true
@@ -222,7 +222,7 @@ andom_id.instance_id: Creating...
 random_id.instance_id: Creation complete after 0s [id=VPapVgriyvw]
 google_compute_instance.default: Creating...
 
-Error: Error loading zone 'europe-west4': googleapi: Error 403: Access Not Configured. Compute Engine API has not been used in project 28488177485 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=28488177485 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry., accessNotConfigured
+Error: Error loading zone 'us-west1-a': googleapi: Error 403: Access Not Configured. Compute Engine API has not been used in project 28488177485 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=28488177485 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry., accessNotConfigured
 
   on main.tf line 14, in resource "google_compute_instance" "default":
   14: resource "google_compute_instance" "default" {

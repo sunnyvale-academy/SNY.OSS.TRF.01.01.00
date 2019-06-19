@@ -12,7 +12,7 @@ $ vagrant ssh
 Move to the right path and create your lab folder
 
 ```
-vagrant@terraform-vm$ cd ~/$GIT_REPO_NAME/labs/01-Getting_started
+vagrant@terraform-vm$ cd ~/$GIT_REPO_NAME/labs/02-Getting_started
 ```
 
 Create a new directory for the project to live and create a main.tf file for the Terraform config. The contents of this file describe all of the GCP resources that will be used in the project.

@@ -1,9 +1,10 @@
 # SNY.OSS.TRF.01.01.00
 
-## Setup the lab environment
 
-Follow the instructions [here](vagrant/README.md)
+## Labs 
 
-## Labs
+[00 - Configure GCP](labs/00-Configure_GCP/README.md)
 
-[01 - Getting Started](labs/01-Getting_started/README.md)
+[01 - Provision VM](labs/01-Provision_VM/README.md)
+
+[02 - Getting Started](labs/02-Getting_started/README.md)

@@ -64,4 +64,4 @@ $ vagrant ssh
 
 You are now ready for the next lab:
 
-[01 - Getting Started](labs/01-Getting_started/README.md)
+[02 - Getting Started](../labs/02-Getting_started/README.md)

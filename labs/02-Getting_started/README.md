@@ -1,34 +1,5 @@
 # Getting started
 
-## Configure Google Cloud Platform
-
-![Vagrant](img/keynote-Cloud_infrastructure_automation_with_Terraform.004.png) 
-
-
-![Vagrant](img/keynote-Cloud_infrastructure_automation_with_Terraform.005.png) 
-
-![Vagrant](img/keynote-Cloud_infrastructure_automation_with_Terraform.006.png) 
-
-![Vagrant](img/keynote-Cloud_infrastructure_automation_with_Terraform.007.png) 
-
-![Vagrant](img/keynote-Cloud_infrastructure_automation_with_Terraform.008.png) 
-
-![Vagrant](img/keynote-Cloud_infrastructure_automation_with_Terraform.009.png) 
-
-![Vagrant](img/keynote-Cloud_infrastructure_automation_with_Terraform.010.png) 
-
-![Vagrant](img/keynote-Cloud_infrastructure_automation_with_Terraform.011.png) 
-
-![Vagrant](img/keynote-Cloud_infrastructure_automation_with_Terraform.012.png) 
-
-![Vagrant](img/keynote-Cloud_infrastructure_automation_with_Terraform.013.png) 
-
-
-## Lab VM setup
-
-Please refer to [Vagrant](../../vagrant/README.md) instructions
-
-
 ## Configure Terraform (within the VM)
 
 Connect to the VM using ssh
@@ -115,9 +86,6 @@ resource "google_compute_instance" "default" {
      image = "debian-cloud/debian-9"
    }
  }
-
-// Make sure flask is installed on all new instances for later steps
- metadata_startup_script = "sudo apt-get update; sudo apt-get install -yq build-essential python-pip rsync; pip install flask"
 
  network_interface {
    network = "default"

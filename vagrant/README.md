@@ -46,7 +46,7 @@ export GCP_SA_CREDENTIALS_FILENAME=
 Copy the previously downloaded GCP json file as described here:
 
 ```
-$ cp ~/Downloads/SNY-OSS-TRF-01-01-00-870577b1e676.json <GIT_REPO_NAME>/gcp
+$ cp ~/Downloads/SNY-OSS-TRF-01-01-00-870577b1e676.json <GIT_REPO_NAME>/vagrant/gcp
 ```
 
 Start the VM provisioning process

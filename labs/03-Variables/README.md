@@ -31,8 +31,120 @@ vagrant@terraform-vm$ cd mylab
 vagrant@terraform-vm$ vi provider.tf
 ```
 
+Put the following lines of code in provider.tf  (change values accordingly)
+
 ```
+provider "google" {
+ credentials = "${file("<CREDENTIALS_JSON_FILE>")}"
+ project     = "<GCP_PROJECT_ID>"
+ region      = "us-west1-a"
+}
 ```
 
+Put the following lines of code in instance.tf  
+
+```
+
+// Terraform plugin for creating random ids
+resource "random_id" "instance_id" {
+ byte_length = 8
+}
+
+// A single Google Cloud Engine instance
+resource "google_compute_instance" "default" {
+ name         = "my-vm-${random_id.instance_id.hex}"
+ machine_type = "f1-micro"
+ zone         = "us-west1-a"
+
+ boot_disk {
+   initialize_params {
+     image = "debian-cloud/debian-9"
+   }
+ }
+
+ network_interface {
+   network = "default"
+
+   access_config {
+     // Include this section to give the VM an external ip address
+   }
+ }
+}
+```
+
+To verify the split, try terraform plan and apply again:
+
+```
+vagrant@terraform-vm$ terraform plan
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but will not be
+persisted to local or remote state storage.
+
+
+------------------------------------------------------------------------
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # google_compute_instance.default will be created
+  + resource "google_compute_instance" "default" {
+      + can_ip_forward       = false
+      + cpu_platform         = (known after apply)
+      ...
+```
 
 # Use variables
+
+Your provider.tf file now should figure as follows:
+
+```
+// Configure the Google Cloud provider
+provider "google" {
+ credentials = "${file("${var.CREDENTIAL_FILE}")}"
+ project     = "${var.PROJECT_ID}"
+ region      = "${var.REGION}"
+}
+```
+
+In the instance.tf, change the following line:
+
+```
+        image = "debian-cloud/debian-9"
+```
+
+with
+
+```
+        image = "${lookup(var.IMAGE,var.REGION)}"
+```
+
+Now, create vars.tf file, where all the variables are declared (and defaults as well)
+
+
+```
+variable "CREDENTIAL_FILE" {}
+variable "PROJECT_ID" {}
+variable "REGION" {
+    default="us-west1-a"
+}
+variable "IMAGE" {
+    type="map"
+    default={
+        "us-west1-a"="debian-cloud/debian-9"
+        "us-west2-a"="debian-cloud/debian-8"
+    }
+}
+```
+
+In the same directory, create a fine named terraform.tfvars and put the values as follows (change the placeholders accordingly):
+
+```
+CREDENTIAL_FILE="<CREDENTIALS_JSON_FILE>"
+PROJECT_ID="<GCP_PROJECT_ID>"
+REGION="us-west1-a"
+```
+
+

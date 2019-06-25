@@ -15,4 +15,4 @@
 
 ## Appendices
 
-[A - Sync your local copy of the forked repo](appendices/A-Sync_copy_of_forked_repo)
+[A - Sync your local copy of a forked repo](appendices/A-Sync_copy_of_forked_repo)

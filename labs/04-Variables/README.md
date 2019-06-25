@@ -228,4 +228,39 @@ Terraform will perform the following actions:
               + image = "debian-cloud/debian-9"
 ```
 
+Apply the plan
+
+```
+vagrant@terraform-vm$  terraform apply
+
+```
+
+Remember to destroy resources (active VM cost)
+
+```
+vagrant@terraform-vm$ terraform destroy
+random_id.instance_id: Refreshing state... [id=VPapVgriyvw]
+google_compute_instance.default: Refreshing state... [id=my-vm-54f6a9560ae2cafc]
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # google_compute_instance.default will be destroyed
+  - resource "google_compute_instance" "default" {
+      - can_ip_forward       = false -> null
+      - cpu_platform         = "Intel Broadwell" -> null
+      - deletion_protection  = false -> null
+      - guest_accelerator    = [] -> null
+      - id                   = "my-vm-54f6a9560ae2cafc" -> null
+      - instance_id          = "942803623566960790" -> null
+      - label_fingerprint    = "42WmSpB8rSM=" -> null
+      - labels               = {} -> null
+      - machine_type         = "f1-micro" -> null
+...
+```
+
+
 

@@ -23,7 +23,7 @@ vagrant@terraform-vm$ cd mylab
 vagrant@terraform-vm$ vi main.tf
 ```
 
-Write the following code into main.tf file
+Write the following code into main.tf file (change values accordingly)
 
 ```
 // Configure the Google Cloud provider

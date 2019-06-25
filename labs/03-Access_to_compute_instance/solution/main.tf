@@ -31,6 +31,6 @@ resource "google_compute_instance" "default" {
  }
 
  metadata = {
-   ssh-keys = "terraform:${file("~/.ssh/id_rsa.pub")}"
+   ssh-keys = "denis_maggiorotto:${file("~/.ssh/id_rsa.pub")}"
  }
 }

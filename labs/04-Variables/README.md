@@ -2,9 +2,9 @@
 
 ## Prerequisite
 
-Having completed labs 00, 01 and 02. 
+Having completed labs 00, 01, 02, and 03. 
 
-If you did not finish lab 02, you can take main.tf file in the solution folder.
+If you did not finish lab 03, you can take main.tf file in the solution folder.
 
 ## Split main.tf
 

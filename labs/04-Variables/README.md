@@ -29,7 +29,7 @@ $ vagrant ssh
 Move to the right path and create your lab folder
 
 ```
-vagrant@terraform-vm$ cd ~/$GIT_REPO_NAME/labs/03-Variables
+vagrant@terraform-vm$ cd ~/$GIT_REPO_NAME/labs/04-Variables
 ```
 
 Create a new directory for the project to live and create a main.tf file for the Terraform config. The contents of this file describe all of the GCP resources that will be used in the project.
@@ -77,6 +77,9 @@ resource "google_compute_instance" "default" {
    access_config {
      // Include this section to give the VM an external ip address
    }
+ }
+ metadata = {
+   ssh-keys = "<YOUR_VM_USERNAME>:${file("~/.ssh/id_rsa.pub")}"
  }
 }
 ```
@@ -130,11 +133,28 @@ with
         image = "${lookup(var.IMAGE,var.REGION)}"
 ```
 
+and 
+
+```
+
+   ssh-keys = "<YOUR_VM_USERNAME>:${file("~/.ssh/id_rsa.pub")}"
+
+```
+
+with
+
+```
+   ssh-keys = "${var.VM_USERNAME}:${file("~/.ssh/id_rsa.pub")}"
+```
+
+
+
 Now, create vars.tf file, where all the variables are declared (and defaults as well)
 
 
 ```
 variable "CREDENTIAL_FILE" {}
+variable "VM_USERNAME" {}
 variable "PROJECT_ID" {}
 variable "REGION" {
     default="us-west1-a"
@@ -154,7 +174,16 @@ In the same directory, create a fine named terraform.tfvars and put the values a
 CREDENTIAL_FILE="<CREDENTIALS_JSON_FILE>"
 PROJECT_ID="<GCP_PROJECT_ID>"
 REGION="us-west1-a"
+VM_USERNAME=<YOUR_VM_USERNAME>
 ```
+
+Username within the VM instance will be your GCP email account, without the @domain.it part and with _ instead of .
+
+For example, denis.maggiorotto@gmail.com will be denis_maggiorotto.
+
+
+
+
 
 
 ```

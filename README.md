@@ -8,3 +8,11 @@
 [01 - Provision VM](labs/01-Provision_VM/README.md)
 
 [02 - Getting Started](labs/02-Getting_started/README.md)
+
+[03 - Access to Compute Instance](labs/03-Access_to_compute_instance/README.md)
+
+[04 - Variables](labs/04-Getting_started/README.md)
+
+## Appendices
+
+[A - Sync your local copy of the forked repo](appendices/A-Sync_copy_of_forked_repo)

@@ -126,10 +126,10 @@ Connect to the GCP Dashboard, you will find the newly created VM instance into t
 ![VM list](img/VM_instances.png)
 
 
-Try to SSH into the new VM instance (change <YOUR_USERNAME> accordingly).
+Try to SSH into the new VM instance (change <YOUR_USERNAME> and <YOUR_INSTANCE_IP> accordingly).
 
 ```
-vagrant@terraform-vm$ ssh -l <YOUR_USERNAME> 34.83.39.31
+vagrant@terraform-vm$ ssh -l <YOUR_USERNAME> <YOUR_INSTANCE_IP>
 
 The authenticity of host '34.83.39.31 (34.83.39.31)' can't be established.
 ECDSA key fingerprint is SHA256:lBatNZn9qPUM5DZR4UNwtT2AZ0NS8GxMfGhlngeVsKI.

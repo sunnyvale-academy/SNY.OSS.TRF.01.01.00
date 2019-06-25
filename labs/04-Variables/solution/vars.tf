@@ -1,4 +1,5 @@
 variable "CREDENTIAL_FILE" {}
+variable "VM_USERNAME" {}
 variable "PROJECT_ID" {}
 variable "REGION" {
     default="us-west1-a"

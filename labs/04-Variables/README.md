@@ -1,10 +1,19 @@
 # Split files and use variables
 
-## Prerequisite
+## Prerequisites
 
 Having completed labs 00, 01, 02, and 03. 
 
 If you did not finish lab 03, you can take main.tf file in the solution folder.
+
+## Connect to the Vagrant VM
+
+Connect to the VM using ssh
+
+```
+$ cd <GIT_REPO_NAME>/vagrant
+$ vagrant ssh
+```
 
 ## Split main.tf
 

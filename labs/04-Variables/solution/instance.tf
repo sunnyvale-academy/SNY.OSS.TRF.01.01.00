@@ -22,4 +22,8 @@ resource "google_compute_instance" "default" {
      // Include this section to give the VM an external ip address
    }
  }
+
+metadata = {
+   ssh-keys = "${var.VM_USERNAME}:${file("~/.ssh/id_rsa.pub")}"
+ }
 }

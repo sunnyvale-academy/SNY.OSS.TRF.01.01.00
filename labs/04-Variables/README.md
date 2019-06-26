@@ -261,6 +261,4 @@ Terraform will perform the following actions:
       - machine_type         = "f1-micro" -> null
 ...
 ```
-
-
-
+Type yes when prompted

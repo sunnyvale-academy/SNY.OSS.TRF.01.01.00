@@ -11,7 +11,9 @@
 
 [03 - Access to Compute Instance](labs/03-Access_to_compute_instance/README.md)
 
-[04 - Variables](labs/04-Getting_started/README.md)
+[04 - Variables](labs/04-Variables/README.md)
+
+[05 - Output variables](labs/05-Output_variables/README.md)
 
 ## Appendices
 

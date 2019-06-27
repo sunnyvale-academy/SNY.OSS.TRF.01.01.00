@@ -9,7 +9,7 @@ Change <GIT_LOCAL_WORKING_COPY> placeholder with a path pointing to your local w
 
 ```
 $ cd <GIT_LOCAL_WORKING_COPY>
-$ git remote add upstream git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+$ git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
 ```
 
 Verify the new upstream repository you've specified for your fork.

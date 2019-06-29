@@ -81,6 +81,7 @@ Vagrant.configure("2") do |config|
     h.vm.provision "shell", path: "scripts/clone_labs_repo.sh"
     h.vm.provision "shell", path: "scripts/copy_gcp_stuff.sh"
     h.vm.provision "shell", path: "scripts/generate_keypair.sh"
+    h.vm.provision "shell", path: "scripts/install_ansible.sh"
     h.vm.hostname = "terraform-vm"
     h.vm.provider :virtualbox do |vb|
         vb.name = "terraform-vm"

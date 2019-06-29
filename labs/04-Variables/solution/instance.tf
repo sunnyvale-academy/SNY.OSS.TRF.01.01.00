@@ -7,7 +7,7 @@ resource "random_id" "instance_id" {
 resource "google_compute_instance" "default" {
  name         = "my-vm-${random_id.instance_id.hex}"
  machine_type = "f1-micro"
- zone         = "us-west1-a"
+ zone         = "${var.REGION}"
 
  boot_disk {
    initialize_params {

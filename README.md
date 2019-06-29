@@ -17,6 +17,8 @@
 
 [06 - Software provisioning](labs/06-Software_provisioning/README.md)
 
+[07 - Manage persistent data](labs/07-Manage_persistent_data/README.md)
+
 ## Appendices
 
 [A - Sync your local copy of a forked repo](appendices/A-Sync_copy_of_forked_repo)

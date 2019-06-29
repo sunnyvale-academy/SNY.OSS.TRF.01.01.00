@@ -171,7 +171,7 @@ denis_maggiorotto@my-vm-aeea7498bd7dcacf:~$ sudo dmesg | grep sd
 
 In this example, **sda** is the boot disk, **sdb** is the one we provisioned earlier.
 
-Now have to partition, format the mount the new disk.
+Now you have to partition, format the mount the new disk.
 
 ```
 denis_maggiorotto@my-vm-aeea7498bd7dcacf:~$ sudo parted /dev/sdb --script -- mklabel msdos
@@ -229,7 +229,43 @@ vagrant@terraform-vm$ terraform plan
 ...
 vagrant@terraform-vm$ terraform apply
 ...
+google_compute_instance.default: Creating...
+google_compute_disk.disk1: Creation complete after 5s [id=test-disk]
+google_compute_instance.default: Still creating... [10s elapsed]
+google_compute_instance.default: Creation complete after 13s [id=my-vm-2f16c8d45ebc4695]
+google_compute_attached_disk.disk1_attachment: Creating...
+google_compute_attached_disk.disk1_attachment: Provisioning with 'remote-exec'...
+google_compute_attached_disk.disk1_attachment (remote-exec): Connecting to remote host via SSH...
+google_compute_attached_disk.disk1_attachment (remote-exec):   Host: 35.233.224.79
+google_compute_attached_disk.disk1_attachment (remote-exec):   User: denis_maggiorotto
+google_compute_attached_disk.disk1_attachment (remote-exec):   Password: false
+google_compute_attached_disk.disk1_attachment (remote-exec):   Private key: true
+google_compute_attached_disk.disk1_attachment (remote-exec):   Certificate: false
+google_compute_attached_disk.disk1_attachment (remote-exec):   SSH Agent: true
+google_compute_attached_disk.disk1_attachment (remote-exec):   Checking Host Key: false
+google_compute_attached_disk.disk1_attachment: Still creating... [10s elapsed]
+google_compute_attached_disk.disk1_attachment (remote-exec): Connected!
+google_compute_attached_disk.disk1_attachment (remote-exec): Information: You may need to update
+google_compute_attached_disk.disk1_attachment (remote-exec): /etc/fstab.
+
+google_compute_attached_disk.disk1_attachment (remote-exec): mke2fs 1.43.4 (31-Jan-2017)
+google_compute_attached_disk.disk1_attachment (remote-exec): Discarding device blocks: done         
+google_compute_attached_disk.disk1_attachment (remote-exec): Creating filesystem with 249856 4k blocks and 62464 inodes
+google_compute_attached_disk.disk1_attachment (remote-exec): Filesystem UUID: 71dc289d-6c2b-49d8-83d3-a7da535afa76
+google_compute_attached_disk.disk1_attachment (remote-exec): Superblock backups stored on blocks:
+google_compute_attached_disk.disk1_attachment (remote-exec):    32768, 98304, 163840, 229376
+
+google_compute_attached_disk.disk1_attachment (remote-exec): Allocating group tables: done
+google_compute_attached_disk.disk1_attachment (remote-exec): Writing inode tables: done
+google_compute_attached_disk.disk1_attachment (remote-exec): Creating journal (4096 blocks): done
+google_compute_attached_disk.disk1_attachment (remote-exec): Writing superblocks and filesystem accounting information:    
+google_compute_attached_disk.disk1_attachment (remote-exec): done
+
+google_compute_attached_disk.disk1_attachment: Creation complete after 15s [id=my-vm-2f16c8d45ebc4695:test-disk]
+
 ```
+
+The output above says that you automated the process.
 
 Remember to destroy resources (active VM cost)
 

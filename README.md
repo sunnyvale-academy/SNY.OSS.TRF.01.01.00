@@ -15,6 +15,8 @@
 
 [05 - Output variables](labs/05-Output_variables/README.md)
 
+[06 - Software provisioning](labs/06-Software_provisioning/README.md)
+
 ## Appendices
 
 [A - Sync your local copy of a forked repo](appendices/A-Sync_copy_of_forked_repo)

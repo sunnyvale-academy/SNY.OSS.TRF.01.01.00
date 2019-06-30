@@ -46,7 +46,7 @@ resource "google_compute_disk" "disk1" {
 }
 ```
 
-Now open the instance.tf file and add this declaration at the bottom of the file (outside any other resource declaration)
+Now open the **instance.tf** file and add this declaration at the bottom of the file (outside any other resource declaration)
 
 ```
 resource "google_compute_attached_disk" "disk1_attachment" {

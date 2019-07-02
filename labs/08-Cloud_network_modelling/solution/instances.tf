@@ -84,16 +84,62 @@ resource "google_compute_instance" "appserver" {
 
  provisioner "remote-exec" {
    inline = [
-     "sudo apt-get install -y apache"
+      "curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -",
+      "sudo apt-get install -y build-essential nodejs",
+      "mkdir ~/myapp",
+      "npm install express --prefix ~/myapp --save",
    ]
 
    connection {
     type     = "ssh"
-    host     = "${google_compute_instance.webserver.network_interface.0.access_config.0.nat_ip}"
+    host     = "${google_compute_instance.appserver.network_interface.0.network_ip}"
     user     = "${var.VM_USERNAME}"
     private_key = "${file("~/.ssh/id_rsa")}"
+
+    bastion_host = "${google_compute_instance.webserver.network_interface.0.access_config.0.nat_ip}"
+    bastion_private_key = "${file("~/.ssh/id_rsa")}"
+    bastion_port = "22"
+    bastion_user = "${var.VM_USERNAME}"
   }
  }
+
+ provisioner "file" {
+    source      = "app/index.js"
+    destination = "~/myapp/index.js"
+
+    connection {
+      type     = "ssh"
+      host     = "${google_compute_instance.appserver.network_interface.0.network_ip}"
+      user     = "${var.VM_USERNAME}"
+      private_key = "${file("~/.ssh/id_rsa")}"
+
+      bastion_host = "${google_compute_instance.webserver.network_interface.0.access_config.0.nat_ip}"
+      bastion_private_key = "${file("~/.ssh/id_rsa")}"
+      bastion_port = "22"
+      bastion_user = "${var.VM_USERNAME}"
+   }
+}
+
+provisioner "remote-exec" {
+   inline = [
+      "nohup node ~/myapp/index.js &",
+      "sleep 1"
+   ]
+
+   connection {
+    type     = "ssh"
+    host     = "${google_compute_instance.appserver.network_interface.0.network_ip}"
+    user     = "${var.VM_USERNAME}"
+    private_key = "${file("~/.ssh/id_rsa")}"
+
+    bastion_host = "${google_compute_instance.webserver.network_interface.0.access_config.0.nat_ip}"
+    bastion_private_key = "${file("~/.ssh/id_rsa")}"
+    bastion_port = "22"
+    bastion_user = "${var.VM_USERNAME}"
+  }
+ }
+
+
 
  boot_disk {
    initialize_params {

@@ -81,7 +81,7 @@ resource "google_compute_instance" "appserver" {
  name         = "be-${random_id.random_id.hex}"
  machine_type = "f1-micro"
  zone         = "${var.REGION}-${var.ZONE}"
-tags          = ["ssh","http"]
+ /*tags          = ["ssh","http"]*/
  provisioner "remote-exec" {
    inline = [
       "curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -",
@@ -152,9 +152,9 @@ provisioner "remote-exec" {
  network_interface {
    subnetwork = "${google_compute_subnetwork.private_subnet.self_link}"
    network_ip = "${var.APPSERVER_IP}"
-   access_config {
+   /*access_config {
      // Include this section to give the VM an external ip address
-   }
+   }*/
  }
 
   metadata = {

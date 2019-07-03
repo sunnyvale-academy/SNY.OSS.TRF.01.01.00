@@ -39,7 +39,7 @@ resource "google_compute_firewall" "allow-ssh-ingress" {
 }
 
 
-resource "google_compute_firewall" "allow-node-ingress" {
+/*resource "google_compute_firewall" "allow-node-ingress" {
   name    = "fw-node-ingress-${random_id.random_id.hex}"
   network = "${google_compute_network.vpc.name}"
   allow {
@@ -47,4 +47,4 @@ resource "google_compute_firewall" "allow-node-ingress" {
     ports    = ["3000"]
   }
   target_tags = ["http"] 
-}
+}*/

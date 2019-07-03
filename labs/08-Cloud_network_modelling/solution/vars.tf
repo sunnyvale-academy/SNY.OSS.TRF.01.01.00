@@ -17,6 +17,12 @@ variable "PUBLIC_SUBNET_CDIR" {
 variable "PRIVATE_SUBNET_CDIR" {
     default="10.26.2.0/24"
 }
+variable "WEBSERVER_IP" {
+    default="10.26.1.2"
+}
+variable "APPSERVER_IP" {
+    default="10.26.2.2"
+}
 variable "IMAGE" {
     type="map"
     default={

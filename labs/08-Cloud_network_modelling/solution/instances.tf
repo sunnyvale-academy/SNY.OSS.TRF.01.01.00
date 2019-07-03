@@ -57,7 +57,7 @@ provisioner "remote-exec" {
 
  network_interface {
    subnetwork = "${google_compute_subnetwork.public_subnet.self_link}"
-
+   network_ip = "${var.WEBSERVER_IP}"
    access_config {
      // Include this section to give the VM an external ip address
    }
@@ -81,13 +81,14 @@ resource "google_compute_instance" "appserver" {
  name         = "be-${random_id.random_id.hex}"
  machine_type = "f1-micro"
  zone         = "${var.REGION}-${var.ZONE}"
-
+tags          = ["ssh","http"]
  provisioner "remote-exec" {
    inline = [
       "curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -",
       "sudo apt-get install -y build-essential nodejs",
       "mkdir ~/myapp",
       "npm install express --prefix ~/myapp --save",
+      "npm install forever --prefix ~/myapp --save",
    ]
 
    connection {
@@ -104,8 +105,8 @@ resource "google_compute_instance" "appserver" {
  }
 
  provisioner "file" {
-    source      = "app/index.js"
-    destination = "~/myapp/index.js"
+    source      = "app/"
+    destination = "~/myapp/"
 
     connection {
       type     = "ssh"
@@ -122,8 +123,9 @@ resource "google_compute_instance" "appserver" {
 
 provisioner "remote-exec" {
    inline = [
-      "nohup node ~/myapp/index.js &",
-      "sleep 1"
+      "sudo chmod a+x /home/${var.VM_USERNAME}/myapp/start_app.sh",
+      "/home/${var.VM_USERNAME}/myapp/start_app.sh",
+      "sleep 10"
    ]
 
    connection {
@@ -149,6 +151,10 @@ provisioner "remote-exec" {
 
  network_interface {
    subnetwork = "${google_compute_subnetwork.private_subnet.self_link}"
+   network_ip = "${var.APPSERVER_IP}"
+   access_config {
+     // Include this section to give the VM an external ip address
+   }
  }
 
   metadata = {

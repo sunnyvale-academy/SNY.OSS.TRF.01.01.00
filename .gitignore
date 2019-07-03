@@ -6,3 +6,4 @@ vagrant/gcp/*.json
 **/.terraform
 **/*.tfstate
 **/*.tfstate.backup
+**/*.terraform*

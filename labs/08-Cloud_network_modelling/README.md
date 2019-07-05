@@ -105,7 +105,7 @@ provider "google" {
 }
 ```
 
-Now that we configured the Terraform environment, we can proceed to declare the VPC, within the **vpn.tf** file insert:
+Now that we configured the Terraform environment, we can proceed to declare the VPC, within the **vpc.tf** file insert:
 
 ```
 resource "google_compute_network" "vpc" {

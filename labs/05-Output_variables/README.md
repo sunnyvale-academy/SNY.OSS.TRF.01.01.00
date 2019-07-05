@@ -26,7 +26,7 @@ Create a new directory for the project to live and create a main.tf file for the
 ```
 vagrant@terraform-vm$ mkdir mylab
 vagrant@terraform-vm$ cd mylab
-vagrant@terraform-vm$ cp ../04-Variables/mylab/* ./
+vagrant@terraform-vm$ cp ../../04-Variables/mylab/* ./
 ```
 
 If you haven't complete the 04-Variables lab, you can take *.tf files from the solution folder.

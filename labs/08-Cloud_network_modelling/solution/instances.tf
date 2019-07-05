@@ -20,7 +20,7 @@ resource "google_compute_instance" "webserver" {
  }
 
  provisioner "file" {
-       source      = "config/nginx.conf"
+       source      = "../config/nginx.conf"
        destination = "/tmp/demo"
 
     connection {
@@ -105,7 +105,7 @@ resource "google_compute_instance" "appserver" {
  }
 
  provisioner "file" {
-    source      = "app/"
+    source      = "../app/"
     destination = "~/myapp/"
 
     connection {

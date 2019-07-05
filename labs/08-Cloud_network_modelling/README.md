@@ -134,7 +134,7 @@ resource "google_compute_subnetwork" "private_subnet" {
 
 Public subnet is routed to the internet thanks to the default GCP router. To let the private subnet reach the internet (useful to provision with software the instance that will be created on it) we have to create a new router and the nat gateway.
 
-Within the routers.tf file please insert:
+Within the **routers.tf** file please insert:
 
 ```
 resource "google_compute_router" "router" {

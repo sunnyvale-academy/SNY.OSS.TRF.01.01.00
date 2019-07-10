@@ -1,0 +1,12 @@
+upstream demo {
+		%{ for addr in ip_addrs ~}
+			server ${addr}:${port};
+		%{ endfor ~}
+}
+
+server {
+	listen 80;
+	location / {
+		proxy_pass http://demo;
+	}
+}

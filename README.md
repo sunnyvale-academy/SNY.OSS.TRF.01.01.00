@@ -21,6 +21,8 @@
 
 [08 - Cloud network modelling](labs/08-Cloud_network_modelling/README.md)
 
+[09 - Templating](labs/09-Templating/README.md)
+
 ## Appendices
 
 [A - Sync your local copy of a forked repo](appendices/A-Sync_copy_of_forked_repo)

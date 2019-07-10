@@ -1,4 +1,4 @@
-// Two Google Cloud Engine instances
+// Google Cloud Engine instances
 
 
 // Web server instance
@@ -146,7 +146,6 @@ provisioner "remote-exec" {
 
 
 resource "null_resource" "be-cluster" {
-
     triggers = {
       cluster_instance_ips = "${join(",", google_compute_instance.appserver.*.network_interface.0.network_ip)}"
   }

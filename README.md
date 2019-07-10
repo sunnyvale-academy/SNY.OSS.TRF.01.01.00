@@ -23,6 +23,8 @@
 
 [09 - Templating](labs/09-Templating/README.md)
 
+[10 - Terraform modules](labs/10-Terraform_modules/README.md)
+
 ## Appendices
 
 [A - Sync your local copy of a forked repo](appendices/A-Sync_copy_of_forked_repo)

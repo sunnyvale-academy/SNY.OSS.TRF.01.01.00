@@ -18,7 +18,7 @@ variable "PRIVATE_SUBNET_CDIR" {
     default="10.26.2.0/24"
 }
 variable "APPSERVERS_COUNT" {
-    default="2"
+    default="3"
 }
 
 variable "IMAGE" {

@@ -14,7 +14,7 @@ resource "google_compute_instance" "webserver" {
     type     = "ssh"
     host     = "${google_compute_instance.webserver.network_interface.0.access_config.0.nat_ip}"
     user     = "${var.VM_USERNAME}"
-    private_key = "${file("${var.SSH_PUB_KEY_FILEPATH}")}"
+    private_key = "${file("${var.SSH_PRIV_KEY_FILEPATH}")}"
   }
  }
 
@@ -22,12 +22,12 @@ resource "google_compute_instance" "webserver" {
 
  boot_disk {
    initialize_params {
-    image = "${lookup(var.IMAGE,"${var.REGION}-${var.ZONE}")}"
+    image = "${var.IMAGE}"
    }
  }
 
  network_interface {
-   subnetwork = "${google_compute_subnetwork.public_subnet.self_link}"
+   subnetwork = "${var.PUBLIC_SUBNET_REF}"
    access_config {
      // Include this section to give the VM an external ip address
    }
@@ -40,6 +40,3 @@ resource "google_compute_instance" "webserver" {
   
 }
 
-output "webserver-ip" {
-    value = "${google_compute_instance.webserver.network_interface.0.access_config.0.nat_ip}"
-}

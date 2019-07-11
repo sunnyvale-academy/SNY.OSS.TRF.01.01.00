@@ -21,6 +21,4 @@ variable "IMAGE" {}
 
 variable "VM_USERNAME" {}
 
-variable "APPSERVERS_COUNT" {
-    default="3"
-}
+variable "APPSERVERS_COUNT" {}

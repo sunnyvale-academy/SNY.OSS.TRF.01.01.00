@@ -1,6 +1,9 @@
 resource "null_resource" "provision_be" {
   count = "${var.APPSERVERS_COUNT}"
   
+  triggers = {
+      cluster_instance_ips = "${join(",", "${var.APPSERVERS_PRIV_IP_LIST}")}"
+  }
 
   provisioner "remote-exec" {
    inline = [

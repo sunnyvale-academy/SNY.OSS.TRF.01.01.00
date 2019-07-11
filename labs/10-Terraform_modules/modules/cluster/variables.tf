@@ -11,8 +11,12 @@ variable "WEBSERVER_IP" {}
 
 variable "APPSERVERS_PRIV_IP_LIST" {}
 
+variable "APPSERVERS_COUNT" {}
+
 variable "SSH_PRIV_KEY_FILEPATH" {
     default="~/.ssh/id_rsa"
 }
+
+variable NGINX_TEMPLATE_FILEPATH {}
 
 

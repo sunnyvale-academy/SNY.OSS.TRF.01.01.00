@@ -26,6 +26,7 @@ module "backend" {
   PRIVATE_SUBNET_REF = "${module.vpc.private_subnet_ref}"
   VM_USERNAME = "${var.VM_USERNAME}"
   IMAGE = "${var.IMAGE}"
+  APPSERVERS_COUNT = "3"
 }
 
 module "application" {
@@ -36,9 +37,11 @@ module "application" {
   SSH_PRIV_KEY_FILEPATH = "~/.ssh/id_rsa"
   BASTION_VM_USERNAME = "${var.VM_USERNAME}"
   BASTION_SSH_PRIV_KEY_FILEPATH = "~/.ssh/id_rsa"
-  // taken from webserver module output
+  // taken from frontend module output
   BASTION_HOST_IP = "${module.frontend.webserver-ip}"
   APP_DIRPATH = "../app/"
+  // taken from backend module output 
+  APPSERVERS_COUNT = "${module.backend.appservers_count}"
 }
 
 
@@ -47,7 +50,10 @@ module "cluster" {
   // taken from backend module output 
   APPSERVERS_PRIV_IP_LIST = "${module.backend.appservers_priv_ip_list}"
   VM_USERNAME = "${var.VM_USERNAME}"
-  // taken from webserver module output 
-  WEBSERVER_HOST = "${module.webserver.webserver-ip}"
+  // taken from frontend module output 
+  WEBSERVER_IP = "${module.frontend.webserver-ip}"
   SSH_PRIV_KEY_FILEPATH = "~/.ssh/id_rsa"
+  NGINX_TEMPLATE_FILEPATH = "../templates/nginx.conf.tmpl"
+  // taken from backend module output 
+  APPSERVERS_COUNT = "${module.backend.appservers_count}"
 }

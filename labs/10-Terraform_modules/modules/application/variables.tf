@@ -7,9 +7,7 @@ variable "ZONE" {
 
 variable "VM_USERNAME" {}
 
-variable "APPSERVERS_COUNT" {
-    default="3"
-}
+variable "APPSERVERS_COUNT" {}
 
 variable "APPSERVERS_PRIV_IP_LIST" {}
 

@@ -25,6 +25,8 @@
 
 [10 - Terraform modules](labs/10-Terraform_modules/README.md)
 
+[11 - Sharing Terraform state](labs/11-Sharing_Terraform_state/README.md)
+
 ## Appendices
 
 [A - Sync your local copy of a forked repo](appendices/A-Sync_copy_of_forked_repo)

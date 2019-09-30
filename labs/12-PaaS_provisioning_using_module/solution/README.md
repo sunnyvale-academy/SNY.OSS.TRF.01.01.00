@@ -171,9 +171,19 @@ ingress.extensions/basic-ingress created
 
 It may take a few minutes for GKE to allocate an external IP address and set up forwarding rules until the load balancer is ready to serve your application.
 
+You can monitor the Ingress status using the following command:
+
 ```console
 vagrant@terraform-vm:~$ kubectl get ingress basic-ingress
-NAME            HOSTS   ADDRESS   PORTS   AGE
-basic-ingress   *                 80      53s
+NAME            HOSTS   ADDRESS               PORTS   AGE
+basic-ingress   *       35.201.110.0          80      3h40m
 ```
 
+Note down the IP in the ADRESS column and use it to invoke the endpoint
+
+```console
+vagrant@terraform-vm:~$ curl http://35.201.110.0/
+Hello, world!
+Version: 1.0.0
+Hostname: web-ddb799d85-txcxz
+```

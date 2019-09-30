@@ -1,4 +1,5 @@
 sudo apt-get install unzip
+rm /usr/local/bin/terraform 2> /dev/null
 if [ ! -f /usr/local/bin/terraform ]; then
     wget https://releases.hashicorp.com/terraform/0.12.4/terraform_0.12.4_linux_amd64.zip
     unzip terraform_0.12.4_linux_amd64.zip

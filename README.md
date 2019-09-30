@@ -27,6 +27,8 @@
 
 [11 - Sharing Terraform state](labs/11-Sharing_Terraform_state/README.md)
 
+[12 - PaaS provisioning using module](labs/12-PaaS_provisioning_using_module/README.md)
+
 ## Appendices
 
 [A - Sync your local copy of a forked repo](appendices/A-Sync_copy_of_forked_repo)

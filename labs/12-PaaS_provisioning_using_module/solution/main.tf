@@ -1,14 +1,14 @@
 module "gke" {
-  version                    = "2.1.0"
   source                     = "terraform-google-modules/kubernetes-engine/google"
-  project_id                 = "${var.PROJECT_ID}"
-  name                       = "gke-test-1"
-  region                     = "us-central1"
-  zones                      = ["us-central1-a", "us-central1-b", "us-central1-f"]
-  network                    = "vpc-01"
-  subnetwork                 = "us-central1-01"
-  ip_range_pods              = "us-central1-01-gke-01-pods"
-  ip_range_services          = "us-central1-01-gke-01-services"
+  version                    = "4.1.0"
+  project_id                 = var.project_id
+  region                     = var.region
+  zones                      = var.zones
+  name                       = var.name
+  network                    = "default"
+  subnetwork                 = "default"
+  ip_range_pods              = ""
+  ip_range_services          = ""
   http_load_balancing        = false
   horizontal_pod_autoscaling = true
   kubernetes_dashboard       = true
@@ -17,17 +17,17 @@ module "gke" {
   node_pools = [
     {
       name               = "default-node-pool"
-      machine_type       = "n1-standard-2"
-      min_count          = 1
-      max_count          = 100
-      disk_size_gb       = 100
+      machine_type       = var.machine_type
+      min_count          = var.min_count
+      max_count          = var.max_count
+      disk_size_gb       = var.disk_size_gb
       disk_type          = "pd-standard"
       image_type         = "COS"
       auto_repair        = true
       auto_upgrade       = true
-      service_account    = "project-service-account@${var.PROJECT_ID}.iam.gserviceaccount.com"
+      service_account    = var.service_account
       preemptible        = false
-      initial_node_count = 80
+      initial_node_count = var.initial_node_count
     },
   ]
 
@@ -43,7 +43,7 @@ module "gke" {
     all = {}
 
     default-node-pool = {
-      default-node-pool = "true"
+      default-node-pool = true
     }
   }
 
@@ -61,7 +61,7 @@ module "gke" {
     default-node-pool = [
       {
         key    = "default-node-pool"
-        value  = "true"
+        value  = true
         effect = "PREFER_NO_SCHEDULE"
       },
     ]

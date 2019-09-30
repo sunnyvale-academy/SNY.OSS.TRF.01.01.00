@@ -119,6 +119,37 @@ Metrics-server is running at https://34.90.62.248/api/v1/namespaces/kube-system/
 ```
 
 ```console
+vagrant@terraform-vm:~$ kuberang 
+Kubectl configured on this node                                                 [OK]
+Delete existing deployments if they exist                                       [OK]
+Nginx service does not already exist                                            [OK]
+BusyBox service does not already exist                                          [OK]
+Nginx service does not already exist                                            [OK]
+Issued BusyBox start request                                                    [OK]
+Issued Nginx start request                                                      [OK]
+Issued expose Nginx service request                                             [OK]
+Both deployments completed successfully within timeout                          [OK]
+Grab nginx pod ip addresses                                                     [OK]
+Grab nginx service ip address                                                   [OK]
+Grab BusyBox pod name                                                           [OK]
+Accessed Nginx service at 10.78.3.123 from BusyBox                              [OK]
+Accessed Nginx service via DNS kuberang-nginx-1569859822148851965 from BusyBox  [OK]
+Accessed Nginx pod at 10.12.0.5 from BusyBox                                    [OK]
+Accessed Nginx pod at 10.12.5.2 from BusyBox                                    [OK]
+Accessed Nginx pod at 10.12.1.13 from BusyBox                                   [OK]
+Accessed Nginx pod at 10.12.3.6 from BusyBox                                    [OK]
+Accessed Google.com from BusyBox                                                [OK]
+Accessed Nginx pod at 10.12.0.5 from this node                                  [ERROR IGNORED]
+Accessed Nginx pod at 10.12.5.2 from this node                                  [ERROR IGNORED]
+Accessed Nginx pod at 10.12.1.13 from this node                                 [ERROR IGNORED]
+Accessed Nginx pod at 10.12.3.6 from this node                                  [ERROR IGNORED]
+Accessed Google.com from this node                                              [OK]
+Powered down Nginx service                                                      [OK]
+Powered down Busybox deployment                                                 [OK]
+Powered down Nginx deployment                                                   [OK]
+```
+
+```console
 vagrant@terraform-vm:~$ kubectl get nodes
 NAME                                              STATUS   ROLES    AGE   VERSION
 gke-gke-cluster-default-node-pool-0d2388be-2jcr   Ready    <none>   14m   v1.14.6-gke.1

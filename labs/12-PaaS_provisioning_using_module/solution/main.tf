@@ -9,10 +9,11 @@ module "gke" {
   subnetwork                 = "default"
   ip_range_pods              = ""
   ip_range_services          = ""
-  http_load_balancing        = false
+  http_load_balancing        = true
   horizontal_pod_autoscaling = true
   kubernetes_dashboard       = true
   network_policy             = true
+  // kubernetes_version         = ""
 
   node_pools = [
     {

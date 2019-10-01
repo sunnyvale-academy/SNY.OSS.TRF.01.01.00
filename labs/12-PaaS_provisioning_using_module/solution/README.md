@@ -94,7 +94,7 @@ vagrant@terraform-vm:~$ terraform apply
 ```
 
 Provisioning may take up to 20 minutes depending on the number of worker nodes you specified.
-After the provision ends, you can type the following command to generate the kubeconfig file on the VM
+After the provision ends, you can type the following command to generate the kubeconfig file on the VM (be sure to specify a correct value for **--region** and **--project** parameters)
 
 ```console
 vagrant@terraform-vm:~$ gcloud beta container clusters get-credentials gke-cluster --region europe-west4 --project sny-oss-trf-01-01-00

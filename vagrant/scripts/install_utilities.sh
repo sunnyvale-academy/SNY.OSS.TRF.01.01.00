@@ -1,7 +1,7 @@
 # Dependencies
 sudo apt-get update
 sudo apt-get -y install dos2unix
-sudo apt-get install -y graphviz python-pydot python-pydot-ng python-pyparsing libcdt5 libcgraph6 libgvc6 libgvpr2 libpathpla#n4 jq
+sudo apt-get install -y graphviz python-pydot python-pydot-ng python-pyparsing libcdt5 libcgraph6 libgvc6 libgvpr2 jq "libpathpla#n4" 
 
 # Kubectl
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl

@@ -1,6 +1,6 @@
 module "gke" {
   source                     = "terraform-google-modules/kubernetes-engine/google"
-  version                    = "4.1.0"
+  version                    = "5.0.0"
   project_id                 = var.project_id
   region                     = var.region
   zones                      = var.zones
@@ -56,17 +56,7 @@ module "gke" {
     }
   }
 
-  node_pools_taints = {
-    all = []
-
-    default-node-pool = [
-      {
-        key    = "default-node-pool"
-        value  = true
-        effect = "PREFER_NO_SCHEDULE"
-      },
-    ]
-  }
+  
 
   node_pools_tags = {
     all = []

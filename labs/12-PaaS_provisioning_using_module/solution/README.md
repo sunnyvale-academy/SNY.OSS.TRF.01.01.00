@@ -65,10 +65,17 @@ Operation "operations/acf.09b94de4-283f-4e0e-bcb9-539cb33e071e" finished success
 vagrant@terraform-vm:~$ gcloud services enable container.googleapis.com
 ```
 
+Move to the lab solution folder (mind to change the repo name, in this case SNY.OSS.TRF.01.01.00, to reflect yours)
+```console
+vagrant@terraform-vm:~$ cd ~/SNY.OSS.TRF.01.01.00/labs/12-PaaS_provisioning_using_module/solution
+vagrant@terraform-vm:solution$ 
+```
+
+
 After having changed the configurations within the `terraform.tfvars` file, provision the environment
 
 ```console
-vagrant@terraform-vm:~$ terraform init
+vagrant@terraform-vm:solution$ terraform init
 terraform init
 Initializing modules...
 
@@ -84,32 +91,32 @@ Terraform has been successfully initialized!
 ```
 
 ```console
-vagrant@terraform-vm:~$ terraform plan
+vagrant@terraform-vm:solution$  terraform plan
 ...
 Plan: 9 to add, 0 to change, 0 to destroy.
 ```
 
 ```console
-vagrant@terraform-vm:~$ terraform apply
+vagrant@terraform-vm:solution$  terraform apply
 ```
 
 Provisioning may take up to 20 minutes depending on the number of worker nodes you specified.
 After the provision ends, you can type the following command to generate the kubeconfig file on the VM (be sure to specify a correct value for **--region** and **--project** parameters)
 
 ```console
-vagrant@terraform-vm:~$ gcloud beta container clusters get-credentials gke-cluster --region europe-west4 --project sny-oss-trf-01-01-00
+vagrant@terraform-vm:solution$  gcloud beta container clusters get-credentials gke-cluster --region europe-west4 --project sny-oss-trf-01-01-00
 ```
 
 To verify the cluster functionalities and the kubeconfig file setup, you may try the following commands:
 
 
 ```console
-vagrant@terraform-vm:~$ ls -l /home/vagrant/.kube/config
+vagrant@terraform-vm:solution$  ls -l /home/vagrant/.kube/config
 -rw------- 1 vagrant vagrant 2483 Sep 30 15:06 /home/vagrant/.kube/config
 ```
 
 ```console
-vagrant@terraform-vm:~$ kubectl cluster-info
+vagrant@terraform-vm:solution$  kubectl cluster-info
 Kubernetes master is running at https://34.90.62.248
 calico-typha is running at https://34.90.62.248/api/v1/namespaces/kube-system/services/calico-typha:calico-typha/proxy
 Heapster is running at https://34.90.62.248/api/v1/namespaces/kube-system/services/heapster/proxy
@@ -119,7 +126,7 @@ Metrics-server is running at https://34.90.62.248/api/v1/namespaces/kube-system/
 ```
 
 ```console
-vagrant@terraform-vm:~$ kuberang 
+vagrant@terraform-vm:solution$  kuberang 
 Kubectl configured on this node                                                 [OK]
 Delete existing deployments if they exist                                       [OK]
 Nginx service does not already exist                                            [OK]
@@ -150,7 +157,7 @@ Powered down Nginx deployment                                                   
 ```
 
 ```console
-vagrant@terraform-vm:~$ kubectl get nodes
+vagrant@terraform-vm:solution$  kubectl get nodes
 NAME                                              STATUS   ROLES    AGE   VERSION
 gke-gke-cluster-default-node-pool-0d2388be-2jcr   Ready    <none>   14m   v1.14.6-gke.1
 gke-gke-cluster-default-node-pool-0d2388be-vlgj   Ready    <none>   14m   v1.14.6-gke.1
@@ -163,7 +170,7 @@ gke-gke-cluster-default-node-pool-89d4f3ad-vt3t   Ready    <none>   14m   v1.14.
 To schedule a Pod and see if the cluster works
 
 ```console
-vagrant@terraform-vm:~$ kubectl apply -f deployment.yaml 
+vagrant@terraform-vm:solution$ kubectl apply -f deployment.yaml 
 deployment.extensions/web created
 service/web created
 ingress.extensions/basic-ingress created
@@ -174,7 +181,7 @@ It may take a few minutes for GKE to allocate an external IP address and set up 
 You can monitor the Ingress status using the following command:
 
 ```console
-vagrant@terraform-vm:~$ kubectl get ingress basic-ingress
+vagrant@terraform-vm:solution$  kubectl get ingress basic-ingress
 NAME            HOSTS   ADDRESS               PORTS   AGE
 basic-ingress   *       35.201.110.0          80      3h40m
 ```
@@ -182,7 +189,7 @@ basic-ingress   *       35.201.110.0          80      3h40m
 Note down the IP in the ADRESS column and use it to invoke the endpoint
 
 ```console
-vagrant@terraform-vm:~$ curl http://35.201.110.0/
+vagrant@terraform-vm:solution$ curl http://35.201.110.0/
 Hello, world!
 Version: 1.0.0
 Hostname: web-ddb799d85-txcxz

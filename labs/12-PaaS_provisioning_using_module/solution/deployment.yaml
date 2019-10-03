@@ -4,6 +4,7 @@ metadata:
   name: web
   namespace: default
 spec:
+  replicas: 5
   selector:
     matchLabels:
       run: web

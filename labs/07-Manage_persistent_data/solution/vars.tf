@@ -9,6 +9,6 @@ variable "IMAGE" {
     default={
         "us-west1-b"="debian-cloud/debian-10"
         "us-west1-a"="debian-cloud/debian-10"
-        "us-west2-a"="debian-cloud/debian-8"
+        "us-west2-a"="debian-cloud/debian-11"
     }
 }

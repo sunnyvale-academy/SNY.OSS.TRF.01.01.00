@@ -67,7 +67,7 @@ resource "google_compute_instance" "default" {
 
  boot_disk {
    initialize_params {
-     image = "debian-cloud/debian-9"
+     image = "debian-cloud/debian-10"
    }
  }
 
@@ -124,7 +124,7 @@ provider "google" {
 In the instance.tf, change the following line:
 
 ```
-        image = "debian-cloud/debian-9"
+        image = "debian-cloud/debian-10"
 ```
 
 with
@@ -162,7 +162,7 @@ variable "REGION" {
 variable "IMAGE" {
     type="map"
     default={
-        "us-west1-a"="debian-cloud/debian-9"
+        "us-west1-a"="debian-cloud/debian-10"
         "us-west2-a"="debian-cloud/debian-8"
     }
 }
@@ -225,7 +225,7 @@ Terraform will perform the following actions:
           + source                     = (known after apply)
 
           + initialize_params {
-              + image = "debian-cloud/debian-9"
+              + image = "debian-cloud/debian-10"
 ```
 
 Apply the plan

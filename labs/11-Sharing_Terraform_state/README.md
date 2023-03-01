@@ -79,7 +79,7 @@ variable "PROJECT_ID" {}
 
 
 variable "IMAGE" {
-    default="debian-cloud/debian-9"
+    default="debian-cloud/debian-10"
 }
 
 variable "SSH_PUB_KEY_FILEPATH" {

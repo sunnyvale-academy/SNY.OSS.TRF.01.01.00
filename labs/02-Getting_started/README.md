@@ -83,7 +83,7 @@ resource "google_compute_instance" "default" {
 
  boot_disk {
    initialize_params {
-     image = "debian-cloud/debian-9"
+     image = "debian-cloud/debian-10"
    }
  }
 
@@ -164,7 +164,7 @@ Terraform will perform the following actions:
           + source                     = (known after apply)
 
           + initialize_params {
-              + image = "debian-cloud/debian-9"
+              + image = "debian-cloud/debian-10"
               + size  = (known after apply)
               + type  = (known after apply)
             }

@@ -12,7 +12,8 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "ubuntu/xenial64"
+  #config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "generic/ubuntu1604"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -44,7 +45,7 @@ Vagrant.configure("2") do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
-  config.vm.synced_folder "../", "/usr/src/git_repo"
+  #config.vm.synced_folder "../", "/usr/src/git_repo", type: "nfs", nfs_version: 4, "nfs_udp": false, mount_options: ["rw", "vers=4", "tcp", "nolock"]
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -56,7 +57,11 @@ Vagrant.configure("2") do |config|
   #
   #   # Customize the amount of memory on the VM:
      vb.memory = "512"
-      vb.cpus = "2"
+     vb.cpus = "2"
+  end
+  config.vm.provider "libvirt" do |lv|
+       lv.memory = "512"
+       lv.cpus = "2"
   end
   #
   # View the documentation for the provider you are using for more
@@ -85,6 +90,11 @@ Vagrant.configure("2") do |config|
     h.vm.hostname = "terraform-vm"
     h.vm.provider :virtualbox do |vb|
         vb.name = "terraform-vm"
+        vb.synced_folder "../", "/usr/src/git_repo"
+    end
+    h.vm.provider :libvirt do |vb|
+      h.vm.synced_folder "../", "/usr/src/git_repo", type: "nfs", nfs_version: 4, "nfs_udp": false, mount_options: ["rw", "vers=4", "tcp", "nolock"]
+      h.vm.synced_folder ".", "/vagrant", type: "nfs", nfs_version: 4, "nfs_udp": false, mount_options: ["rw", "vers=4", "tcp", "nolock"]
     end
   end
 

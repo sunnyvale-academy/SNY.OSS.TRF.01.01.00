@@ -13,7 +13,8 @@ resource "google_compute_instance" "default" {
 // Install software using remote-exec provisioner
  provisioner "remote-exec" {
    inline = [
-      "sudo apt-get -y install tcpdump"
+      "sudo apt-get -y install tcpdump",
+      "sudo apt-get -y install python"
    ]
 
    connection {

@@ -88,7 +88,7 @@ resource "null_resource" "provision_be" {
   provisioner "remote-exec" {
    inline = [
       "curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -",
-      "sudo apt-get install -y build-essential nodejs",
+      "sudo apt-get install -y build-essential nodejs npm",
       "mkdir ~/myapp",
       "npm install express --prefix ~/myapp --save",
       "npm install forever --prefix ~/myapp --save",

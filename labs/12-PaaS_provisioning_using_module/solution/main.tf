@@ -1,6 +1,6 @@
 module "gke" {
   source                     = "terraform-google-modules/kubernetes-engine/google"
-  version                    = "5.0.0"
+  version                    = "8.0.0"
   project_id                 = var.project_id
   region                     = var.region
   zones                      = var.zones
@@ -11,7 +11,7 @@ module "gke" {
   ip_range_services          = ""
   http_load_balancing        = true
   horizontal_pod_autoscaling = true
-  kubernetes_dashboard       = true
+  // kubernetes_dashboard       = true
   network_policy             = true
   // kubernetes_version         = ""
 
@@ -23,7 +23,7 @@ module "gke" {
       max_count          = var.max_count
       disk_size_gb       = var.disk_size_gb
       disk_type          = "pd-standard"
-      image_type         = "COS"
+      image_type         = "COS_CONTAINERD"
       auto_repair        = true
       auto_upgrade       = true
       service_account    = var.service_account
